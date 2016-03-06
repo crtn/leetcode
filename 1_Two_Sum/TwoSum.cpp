@@ -25,15 +25,15 @@
  *
  * proof of correctness:
  * operator 'x' here means Cartesian product
- * for current search space [i..j] x [i..j], i < j:
- *   if nums[i] + nums[j] < target, then we can exclude [i] x [i..j]
- *      because nums[i] + nums[t] <= nums[i] + nums[j] < target for any t <- [i..j],
- *      so the new search space become [i+1..j] x [i..j], because i < j, it is
- *      [i+1..j] x [i+1..j]
- *   if nums[i] + nums[j] > target, then we can exclude [i..j] x [j]
- *      because nums[t] + nums[j] >= nums[i] + nums[j] > target for any t <- [i..j],
- *      so the new search space become [i..j] x [i..j-1], because i < j, it is
- *      [i..j-1] x [i..j-1]
+ * for current search space (i, j) <- [m..n] x [m..n], i < j:
+ *   if nums[m] + nums[n] < target, then we can exclude [m] x [m..n]
+ *      because nums[m] + nums[j] <= nums[m] + nums[n] < target for any j <- [m..n],
+ *      so the new search space become [m+1..n] x [m..n], because i < j, it is
+ *      [m+1..n] x [m+1..n]
+ *   if nums[m] + nums[n] > target, then we can exclude [m..n] x [n]
+ *      because nums[i] + nums[n] >= nums[m] + nums[n] > target for any i <- [m..n],
+ *      so the new search space become [m..n] x [m..n-1], because i < j, it is
+ *      [m..n-1] x [m..n-1]
  * initial search space is [0..len-1] x [0..len-1] (full space)
  *
  * */
